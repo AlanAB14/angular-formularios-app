@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-switches',
@@ -6,11 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class SwitchesComponent implements OnInit {
+export class SwitchesComponent implements OnInit{
 
-  constructor() { }
+  constructor( private fb: FormBuilder ) { }
 
   ngOnInit(): void {
+    this.miFormulario.setValue(this.persona); 
   }
+
+  miFormulario: FormGroup = this.fb.group({
+    genero: ['M', Validators.required],
+    notificaciones: [true, Validators.required],
+    condiciones: [false, Validators.required]
+  })
+
+  persona = {
+    genero : 'F',
+    notificaciones: true
+  }
+
 
 }

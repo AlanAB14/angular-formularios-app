@@ -14,7 +14,7 @@
                 <div class="col-sm-9">
                     <input  type="text"
                             class="form-control"
-                            ngModel
+                            [ngModel]="initForm.producto"
                             name="producto"
                             placeholder="Nombre del producto"
                             minlength="3"
@@ -32,8 +32,8 @@
                 <label class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
                     <input  type="number"
-                            ngModel
                             name="precio"
+                            [ngModel]="initForm.precio"
                             class="form-control"
                             placeholder="Precio del producto"
                             required>
@@ -50,9 +50,12 @@
                 <label class="col-sm-3 col-form-label">Existencias</label>
                 <div class="col-sm-9">
                     <input  type="number"
-                            ngModel
+                            [ngModel]="initForm.existencias"
                             name="existencias"
+                            customMin
+                            [minimo]="0"
                             class="form-control"
+                            required
                             placeholder="Existencias del producto">
                 </div>
             </div>
@@ -62,7 +65,7 @@
                 <div class="col">
                     <button type="submit"
                             class="btn btn-primary float-end"
-                            disabled="miFormulario.invalid"
+                            [disabled]="miFormulario.invalid"
                     >
                         Guardar
                     </button>
@@ -86,5 +89,7 @@
         
         <span>Value</span>
         <pre>{{ miFormulario.value | json }}</pre>
+        
+       
     </div>
 </div>
